@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import '../styles/Form.css';
 import Review from './Review';
+import { useHistory } from "react-router-dom";
 
 export default function Form() {
+  let history = useHistory();
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
     const dateSubmitted = new Date();
     data.dateSubmitted = dateSubmitted;
-    setFormData(data);
-    setFormSubmitted(true);
+    history.push({ pathname: "/view-review", formData: data });
   }
-
-  const [formData, setFormData] = useState({});
-  const [formSubmitted, setFormSubmitted] = useState(false)
 
   return (
     <div className="form">
@@ -75,14 +74,6 @@ export default function Form() {
 
         <input type="submit" />
       </form>
-
-      <br/>
-
-      { formSubmitted && <div className="result-json"><pre>{JSON.stringify(formData,  null, 2)}</pre></div>}
-
-      <br/>
-
-      { formSubmitted && <Review formData={formData}/> }
       <br/>
     </div>
   );
