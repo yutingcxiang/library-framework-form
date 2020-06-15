@@ -1,14 +1,8 @@
-import React, { useEffect } from 'react';
-import { useHistory, Link } from "react-router-dom";
+import React from 'react';
+import { Link } from "react-router-dom";
 import '../styles/Review.css';
 
 export default function Review (props) {
-  let history = useHistory();
-
-  useEffect(() => {
-    console.log(props)
-  })
-
   const renderReview = () => {
     if (props.location.formData) {
       return (
@@ -36,7 +30,7 @@ export default function Review (props) {
   }
 
   return (
-    <div className="review">
+    <div className="view-review">
       {renderReview()}
     </div>
   );

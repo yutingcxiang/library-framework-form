@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import '../styles/Form.css';
-import Review from './Review';
 import { useHistory } from "react-router-dom";
 
 export default function Form() {
@@ -10,11 +9,12 @@ export default function Form() {
   const onSubmit = data => {
     const dateSubmitted = new Date();
     data.dateSubmitted = dateSubmitted;
+    console.log(data)
     history.push({ pathname: "/view-review", formData: data });
   }
 
   return (
-    <div className="form">
+    <div className="new-review">
       <h1>Submit a new review</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>Tool Name<span> * </span></label> 
