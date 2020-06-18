@@ -1,3 +1,4 @@
+.new-review {
 
 form {
   max-width: 500px;
@@ -125,3 +126,6 @@ input[type="submit"] {
 h2 {
   margin-bottom: 0px;
 }
+
+}
+

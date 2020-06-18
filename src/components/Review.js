@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import '../styles/Review.css';
 
 export default function Review (props) {
@@ -24,9 +23,7 @@ export default function Review (props) {
         </div>
       )
     }
-    return (
-      <Link to="/new-review"><h2>Submit new review</h2></Link>
-    )
+    return 
   }
 
   return (
