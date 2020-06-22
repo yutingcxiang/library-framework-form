@@ -3,13 +3,13 @@
   color: white;
   width: 100%;
   margin-bottom: 25px;
+}
 
-  h2 {
-    font-weight: 200;
-    color: white;
-    margin-bottom: 10px;
-    text-decoration: underline;
-    text-decoration-color: white;
-  }
+h2 {
+  font-weight: 200;
+  color: white;
+  margin-bottom: 10px;
+  text-decoration: underline;
+  text-decoration-color: white;
 }
 

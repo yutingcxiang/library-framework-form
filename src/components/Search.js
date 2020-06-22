@@ -1,62 +1,92 @@
-import React, { useEffect } from 'react';
-import { ReactiveBase, ReactiveList, DataSearch } from '@appbaseio/reactivesearch';
+import React from 'react';
 import '../styles/Search.css';
-import Review from "./Review";
-// import axios from 'axios';
+import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
+import axios from 'axios';
 
 export default function Search() {
-  // useEffect(() => {
-  //   const query = {
-  //     query: {
-  //       match_all: {}
-  //     }
-  //   };
+  let history = useHistory();
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = data => {
+    const dateSubmitted = new Date();
+    data.dateSubmitted = dateSubmitted;
+    console.log(data)
 
-  //   axios.get('http://localhost:9200/kns/review/_search?pretty', {
-  //     params: {
-  //       source: JSON.stringify(query),
-  //       source_content_type: 'application/json'
-  //     }
-  //   }).then((res) => {
-  //     console.log(res.data.hits.hits);
-  //   });
-  // })
+    // Send POST request to API endpoint
+    // axios.post('/api/query-reviews', data)
+    // .then(function (response) {
+    //   push to /view-review after submission for filtered results
+    //   history.push({ pathname: "/view-review", formData: data });
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
+  }
 
   return (
     <div className="search-review">
-      <ReactiveBase url="http://localhost:9200/" app="kns">
-      <DataSearch 
-        componentId="SearchReviews" 
-        dataField={['toolName', 'reviewerName']} 
-        placeholder="Search for a tool or engineer"
-      />
-      <ReactiveList
-        componentId="SearchResult"
-        dataField='toolName'
-        react={{ 
-          and: ['SearchReviews'],
-        }}
-        renderItem={res => (
-          <div>
-            <h2>{res.toolName ? res.toolName : ''}</h2>
-            <div>{res.toolRating ? "⭐".repeat(res.toolRating) : ''} </div>
-            {/* <div><em>{props.location.formData.toolRecommendation === "true" ? "Recommended 👍" : "Not recommended 👎"}</em></div>
-            <div>Category: {props.location.formData.toolCategory}</div>
-            <br/>
-            <div>{props.location.formData.toolReview}</div>
-            <br/>
-            <div>What is your familiarity with the tool on a scale of 1 to 10? <em>{props.location.formData.toolFamiliarity}</em></div>
-            <div>Have you used this tool in any projects? If so, which ones? <em>{props.location.formData.reviewerProjects ? props.location.formData.reviewerProjects : " N/A"}</em></div>
-            <div>Have you experienced any challenges or difficulties when using this tool? If so, what? <em>{props.location.formData.toolChallenges ? props.location.formData.toolChallenges : " N/A"}</em></div>
-            <div>Are there any alternative or similar tools that you would consider?<em>{props.location.formData.toolAlternatives ? props.location.formData.toolAlternatives : " N/A"}</em></div>
-            <br/> */}
-            <div>Review by {res.reviewerName ? res.reviewerName : 0}</div>
-            {/* <div>{props.location.formData.dateSubmitted.toLocaleString()}</div> */}
-          </div>
-        )}
-        style={{"color": "white"}}
-      />
-      </ReactiveBase>
+      <h1>Search for reviews</h1>
+      <form className="search-form" onSubmit={handleSubmit(onSubmit)}>
+        <label>Search by Tool Name</label> 
+        <input className="search-input" type="text" name="toolName" placeholder="ex: React Testing Library" ref={register} />
+        <br/>
+
+        <label>Search by Tool Category:</label> 
+        {/* Can be changed to allow for multiple selection */}
+        <select className="search-input" name="toolCategory" defaultValue="" ref={register}>
+          <option value="">---</option>
+          <option value="Accessibility">Accessibility</option>
+          <option value="Build">Build</option>
+          <option value="Data">Data</option>
+          <option value="Design">Design</option>
+          <option value="Utility">Utility</option>
+          <option value="Security">Security</option>
+          <option value="Testing">Testing</option>
+          <option value="Other">Other</option>
+        </select>
+        <br/>
+
+        <label>Search by Reviewer Name:</label> 
+        <input className="search-input" type="text" name="reviewerName" ref={register} />
+        <br/>
+
+        {/* Can be changed to allow for multiple selection */}
+        <label>Search by Role:</label>
+        <select className="search-input" name="reviewerRole" defaultValue="" ref={register}>
+          <option value="">---</option>
+          <option value="Junior Engineer">Junior Engineer</option>
+          <option value="Mid-level Engineer">Mid-level Engineer</option>
+          <option value="Senior Engineer">Senior Engineer</option>
+          <option value="Other">Other</option>
+        </select>
+        <br/>
+
+        {/* Can be changed to be a dropdown list or multiple selection */}
+        <label>Filter by Project:</label>
+        <input className="search-input" type="text" name="reviewerProjects" ref={register} />
+        <br/>
+
+        {/* Can be changed to allow for multiple selection */}
+        <label>Filter by Rating:</label>
+        <br/>
+        <label className="radio-label"><input name="toolRating" type="radio" value="⭐⭐⭐⭐⭐" ref={register}/><span role="img" aria-label="star">⭐⭐⭐⭐⭐</span></label>
+        <label className="radio-label"><input name="toolRating" type="radio" value="⭐⭐⭐⭐" ref={register}/><span role="img" aria-label="star">⭐⭐⭐⭐</span></label>
+        <label className="radio-label"><input name="toolRating" type="radio" value="⭐⭐⭐" ref={register}/><span role="img" aria-label="star">⭐⭐⭐</span></label>
+        <label className="radio-label"><input name="toolRating" type="radio" value="⭐⭐" ref={register}/><span role="img" aria-label="star">⭐⭐</span></label>
+        <label className="radio-label"><input name="toolRating" type="radio" value="⭐" ref={register}/><span role="img" aria-label="star">⭐</span></label>
+        <br/>
+
+        <label>Recommended:</label>
+        <input type="checkbox" placeholder="false" name="toolRecommendation" ref={register} />
+
+        {/* Defaults to 10.Can be changed to allow for multiple selection */}
+        <label>Tool Familiarity:</label>
+        <input className="search-input" type="range" name="toolFamiliarity" min="1" max="10" ref={register({max: 10, min: 1})} />
+        <br/>
+
+        <input type="submit" value="search"/>
+      </form>
+      <br/>
     </div>
   )
 }

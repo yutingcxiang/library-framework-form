@@ -1,6 +1,4 @@
-.new-review {
-
-form {
+form.input-form {
   max-width: 500px;
   margin: 0 auto;
 }
@@ -24,11 +22,11 @@ h1 {
   margin: 0 auto;
 }
 
-p {
+.error {
   color: #bf1650;
 }
 
-p::before {
+p.error::before {
   display: inline;
   content: "⚠ ";
 }
@@ -126,6 +124,3 @@ input[type="submit"] {
 h2 {
   margin-bottom: 0px;
 }
-
-}
-

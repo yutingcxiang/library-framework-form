@@ -23,7 +23,7 @@ export default function Review (props) {
         </div>
       )
     }
-    return 
+    return <div><h2>No Reviews Available</h2></div>
   }
 
   return (
