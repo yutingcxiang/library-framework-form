@@ -14,11 +14,11 @@ export default function Search() {
 
     // Send POST request to API endpoint
     // axios.post('/api/query-reviews', data)
-    // .then(function (response) {
+    // .then((response) => {
     //   push to /view-review after submission for filtered results
     //   history.push({ pathname: "/view-review", formData: data });
     // })
-    // .catch(function (error) {
+    // .catch((error) => {
     //   console.log(error);
     // });
   }
@@ -29,7 +29,7 @@ export default function Search() {
       <form className="search-form" onSubmit={handleSubmit(onSubmit)}>
         <label>Search by Tool Name</label> 
         <input className="search-input" type="text" name="toolName" placeholder="ex: React Testing Library" ref={register} />
-        <br/>
+        {/* <br/> */}
 
         <label>Search by Tool Category:</label> 
         {/* Can be changed to allow for multiple selection */}
@@ -44,14 +44,14 @@ export default function Search() {
           <option value="Testing">Testing</option>
           <option value="Other">Other</option>
         </select>
-        <br/>
+        {/* <br/> */}
 
         <label>Search by Reviewer Name:</label> 
         <input className="search-input" type="text" name="reviewerName" ref={register} />
-        <br/>
+        {/* <br/> */}
 
         {/* Can be changed to allow for multiple selection */}
-        <label>Search by Role:</label>
+        <label>Search by Reviewer Role:</label>
         <select className="search-input" name="reviewerRole" defaultValue="" ref={register}>
           <option value="">---</option>
           <option value="Junior Engineer">Junior Engineer</option>
@@ -59,7 +59,7 @@ export default function Search() {
           <option value="Senior Engineer">Senior Engineer</option>
           <option value="Other">Other</option>
         </select>
-        <br/>
+        {/* <br/> */}
 
         {/* Can be changed to be a dropdown list or multiple selection */}
         <label>Filter by Project:</label>
@@ -77,7 +77,7 @@ export default function Search() {
         <br/>
 
         <label>Recommended:</label>
-        <input type="checkbox" placeholder="false" name="toolRecommendation" ref={register} />
+        <input className="search-checkbox" type="checkbox" placeholder="false" name="toolRecommendation" ref={register} />
 
         {/* Defaults to 10.Can be changed to allow for multiple selection */}
         <label>Tool Familiarity:</label>

@@ -7,17 +7,18 @@ form.search-form {
   margin: 0 auto;
 }
 
+
 .search-input {
   max-width: 400px;
   float: right;
   position: relative;
-  top: 15px;
+  margin-top: 10px;
+  top: 7.5px;
 }
 
 input[type="range"] {
   max-width: 250px;
   position: relative;
-  top: 14px;
 }
 
 input[type="checkbox"] {

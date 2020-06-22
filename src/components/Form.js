@@ -14,11 +14,11 @@ export default function Form() {
 
     // Send POST request to API endpoint
     // axios.post('/api/create-review', data)
-    // .then(function (response) {
+    // .then((response) => {
     //   push to / after submission to see all reviews
     //   history.push({ pathname: "/" });
     // })
-    // .catch(function (error) {
+    // .catch((error) => {
     //   console.log(error);
     // });
   }
@@ -44,7 +44,6 @@ export default function Form() {
           <option value="Testing">Testing</option>
           <option value="Other">Other</option>
         </select>
-        <br/>
 
         <label>Your Name<span>*</span></label> 
         <input name="reviewerName" ref={register({ required: true })} />
@@ -66,7 +65,7 @@ export default function Form() {
 
         <label>Would you use this tool again or recommend this tool to others? <span>*</span></label>
         <label className="radio-label"><input name="toolRecommendation" type="radio" value={true} ref={register({ required: true })}/>Yes</label>
-        <label className="radio-label"><input name="toolRecommendation" type="radio" value={false} ref={register({ required: true })}/>No</label>
+        <label className="radio-label margin-right"><input name="toolRecommendation" type="radio" value={false} ref={register({ required: true })}/>No</label>
         {errors.toolRecommendation && <p className="error">Please select an option</p>}
 
         <label>How would you review this tool? <span>*</span></label>
