@@ -67,6 +67,10 @@ span {
   margin-right: 50px;
 }
 
+.margin-right {
+  margin-right: 150px;
+}
+
 input[type="radio"] {
   display: inline-block;
   width: 15px;

@@ -1,25 +1,25 @@
 import React from 'react';
 import '../styles/Review.css';
 
-export default function Review (props) {
+export default function Review ({ reviewData }) {
   const renderReview = () => {
-    if (props.location.formData) {
+    if (reviewData) {
       return (
         <div>
-          <h2>{props.location.formData.toolName}</h2>
-          <div>{"⭐".repeat(props.location.formData.toolRating)} </div>
-          <div><em>{props.location.formData.toolRecommendation === "true" ? "Recommended 👍" : "Not recommended 👎"}</em></div>
-          <div>Category: {props.location.formData.toolCategory}</div>
+          <h2>{reviewData.toolName}</h2>
+          <div>{"⭐".repeat(reviewData.toolRating)} </div>
+          <div><em>{reviewData.toolRecommendation === "true" ? "Recommended 👍" : "Not recommended 👎"}</em></div>
+          <div>Category: {reviewData.toolCategory}</div>
           <br/>
-          <div>{props.location.formData.toolReview}</div>
+          <div>{reviewData.toolReview}</div>
           <br/>
-          <div>What is your familiarity with the tool on a scale of 1 to 10? <em>{props.location.formData.toolFamiliarity}</em></div>
-          <div>Have you used this tool in any projects? If so, which ones? <em>{props.location.formData.reviewerProjects ? props.location.formData.reviewerProjects : " N/A"}</em></div>
-          <div>Have you experienced any challenges or difficulties when using this tool? If so, what? <em>{props.location.formData.toolChallenges ? props.location.formData.toolChallenges : " N/A"}</em></div>
-          <div>Are there any alternative or similar tools that you would consider?<em>{props.location.formData.toolAlternatives ? props.location.formData.toolAlternatives : " N/A"}</em></div>
+          <div>What is your familiarity with the tool on a scale of 1 to 10? <em>{reviewData.toolFamiliarity}</em></div>
+          <div>Have you used this tool in any projects? If so, which ones? <em>{reviewData.reviewerProjects ? reviewData.reviewerProjects : " N/A"}</em></div>
+          <div>Have you experienced any challenges or difficulties when using this tool? If so, what? <em>{reviewData.toolChallenges ? reviewData.toolChallenges : " N/A"}</em></div>
+          <div>Are there any alternative or similar tools that you would consider?<em>{reviewData.toolAlternatives ? reviewData.toolAlternatives : " N/A"}</em></div>
           <br/>
-          <div>Review by {props.location.formData.reviewerName} ({props.location.formData.reviewerRole})</div>
-          <div>{props.location.formData.dateSubmitted.toLocaleString()}</div>
+          <div>Review by {reviewData.reviewerName} ({reviewData.reviewerRole})</div>
+          <div>{reviewData.dateSubmitted.toLocaleString()}</div>
         </div>
       )
     }
