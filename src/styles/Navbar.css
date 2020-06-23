@@ -1,0 +1,26 @@
+.navbar-menu {
+  color: white;
+  float: right;
+  width: 100%;
+  margin-bottom: 50px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(79, 98, 148);
+}
+
+.app-title, h3 {
+  display: inline;
+  border: none;
+}
+
+h3 {
+  font-weight: 100;
+  color: white;
+  position: relative;
+  top: 10px;
+}
+
+a {
+  color: white;
+  margin: 0px 10px;
+  float: right;
+}
