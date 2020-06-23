@@ -19,6 +19,8 @@ form.search-form {
 input[type="range"] {
   max-width: 250px;
   position: relative;
+  top: 15px;
+  padding: 0;
 }
 
 input[type="checkbox"] {

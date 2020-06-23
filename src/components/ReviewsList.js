@@ -2,6 +2,20 @@ import React, { useState, useEffect } from 'react';
 import Review from "./Review";
 // import axios from 'axios';
 
+const sampleReview = [{
+  dateSubmitted: new Date().toLocaleString(),
+  reviewerName: "Christine",
+  reviewerProjects: "Leopard Solutions",
+  reviewerRole: "Junior Engineer",
+  toolAlternatives: "",
+  toolcategory: "Testing",
+  toolChallenges: "There is a learning curve.",
+  toolName: "React Testing Library",
+  toolRating: "4",
+  toolRecommendation: "true",
+  toolReview: "Good testing tool."
+}]
+
 export default function ReviewsList () {
   const [reviews, setReviews] = useState([])
 
@@ -16,12 +30,20 @@ export default function ReviewsList () {
     // });
   // })
 
+  useEffect(() => {
+    setReviews(sampleReview)
+  }, [reviews])
+
+
   const displayReviews = () => {
-    for (const review in reviews) {
-      return (
-        <li><Review reviewData={review}/></li>
-      )
-    }
+    if (reviews.length > 0) {
+      for (let review in reviews) {
+        return (
+          <li><Review reviewData={reviews[review]}/></li>
+        )
+      }
+    } 
+    return <div>No Reviews Found</div>
   }
 
   return (

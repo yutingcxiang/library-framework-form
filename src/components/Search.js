@@ -16,7 +16,7 @@ export default function Search() {
     // axios.post('/api/query-reviews', data)
     // .then((response) => {
     //   push to /view-review after submission for filtered results
-    //   history.push({ pathname: "/view-review", formData: data });
+      history.push({ pathname: "/view-review", reviewData: data });
     // })
     // .catch((error) => {
     //   console.log(error);
@@ -29,7 +29,6 @@ export default function Search() {
       <form className="search-form" onSubmit={handleSubmit(onSubmit)}>
         <label>Search by Tool Name</label> 
         <input className="search-input" type="text" name="toolName" placeholder="ex: React Testing Library" ref={register} />
-        {/* <br/> */}
 
         <label>Search by Tool Category:</label> 
         {/* Can be changed to allow for multiple selection */}
@@ -44,11 +43,9 @@ export default function Search() {
           <option value="Testing">Testing</option>
           <option value="Other">Other</option>
         </select>
-        {/* <br/> */}
 
         <label>Search by Reviewer Name:</label> 
         <input className="search-input" type="text" name="reviewerName" ref={register} />
-        {/* <br/> */}
 
         {/* Can be changed to allow for multiple selection */}
         <label>Search by Reviewer Role:</label>
@@ -59,7 +56,6 @@ export default function Search() {
           <option value="Senior Engineer">Senior Engineer</option>
           <option value="Other">Other</option>
         </select>
-        {/* <br/> */}
 
         {/* Can be changed to be a dropdown list or multiple selection */}
         <label>Filter by Project:</label>

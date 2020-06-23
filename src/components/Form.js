@@ -8,7 +8,7 @@ export default function Form() {
   let history = useHistory();
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
-    const dateSubmitted = new Date();
+    const dateSubmitted = new Date().toLocaleString();
     data.dateSubmitted = dateSubmitted;
     console.log(data)
 
